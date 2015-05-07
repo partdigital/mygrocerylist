@@ -1,21 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>My Grocery List</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div id="header">
-        <h2>MyGroceryList Application</h2>
-    </div>
-    <div id = "left-column">
-        <ul>
-            <li><a href = "index.php">Home</a></li>
-            <li><a href = "item.php">Add Grocery Item</a></li>
-            <li><a href = "list.php">List Grocery Items</a></li>
-        </ul>
-    </div>
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/menu.php'; ?>
     <div id = "content">
         <h1>Grocery List</h2>   
 		<table>
@@ -31,6 +15,4 @@
 			</tr>
 		</table>
     </div>
-    <div id = "footer"></div>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>

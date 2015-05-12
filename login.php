@@ -1,3 +1,4 @@
+<?php include 'bootstrap.php'; ?>
 <?php include 'includes/header.php'; ?>
     <div id = "content">
         <h1>Log In</h2>   

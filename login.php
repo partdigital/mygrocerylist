@@ -1,4 +1,19 @@
 <?php include 'bootstrap.php'; ?>
+<?php 
+	// If form was submitted 
+	if (!empty($_POST)) {
+		
+		// Do the submitted username and password match the constants set in config.php?
+		if ($_POST['username'] == USERNAME && $_POST['password'] == PASSWORD) {
+
+			// Set a session variable  as logged in 
+			$_SESSION['auth'] = TRUE; 
+
+			// Redirect to index.php 
+			header('location:index.php'); 
+		}
+	}
+?>
 <?php include 'includes/header.php'; ?>
     <div id = "login">
         <div class="content">

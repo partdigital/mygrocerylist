@@ -1,4 +1,11 @@
 <?php include 'bootstrap.php'; ?>
+<?php 
+	// If not logged in 
+	if (empty($_SESSION['auth'])) {
+		// redirect to login.php
+		header('location:login.php'); 
+	}
+?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/menu.php'; ?>
 	<div id = "content">

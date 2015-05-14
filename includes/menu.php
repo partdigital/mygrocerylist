@@ -1,7 +1,21 @@
+<?php 
+	$menu = array(
+		'index.php' => 'Home',
+		'item.php' => 'Add Grocery Item',
+		'list.php' => 'List Grocery Items',
+	); 
+?>
 <div id = "left-column">
-    <ul>
-        <li><a href = "index.php">Home</a></li>
-        <li><a href = "item.php">Add Grocery Item</a></li>
-        <li><a href = "list.php">List Grocery Items</a></li>
-    </ul>
+<?php 
+	// If menu array isn't empty 
+	if (!empty($menu)) {
+		print '<ul>'; 
+		// Loop through each item
+		foreach ($menu as $url => $title) {
+			// Print that item as a link 
+			print '<li><a href = "'.$url.'">'.$title.'</a></li>';
+		}
+		print '</ul>'; 
+	}
+?>
 </div>

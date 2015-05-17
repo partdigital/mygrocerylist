@@ -2,9 +2,25 @@
 <?php 
 	// If form was submitted 
 	if (!empty($_POST)) {
+
+		// Sanitize input 
+		foreach ($_POST as $key => $value) {
+			$_POST[$key] = strip_tags($value); 
+		}
 		
-		// Do the submitted username and password match the constants set in config.php?
-		if ($_POST['username'] == USERNAME && $_POST['password'] == PASSWORD) {
+		// Encrypt the password 
+		$password = md5($_POST['password']); 
+
+		// Username
+		$username = $_POST['username']; 
+
+		// Build query 
+		$query = mysqli_query($db, 'SELECT * FROM users WHERE `username` = "'.$username.'" AND `password` = "'.$password.'"'); 	
+        
+        $user_exists = mysqli_affected_rows($db); 
+        
+		// Run the conditional.
+		if (!empty($user_exists)) {
 
 			// Set a session variable  as logged in 
 			$_SESSION['auth'] = TRUE; 

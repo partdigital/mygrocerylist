@@ -3,6 +3,7 @@
 		'index.php' => 'Home',
 		'item.php' => 'Add Grocery Item',
 		'list.php' => 'List Grocery Items',
+		'logout.php' => 'Log Out',
 	); 
 ?>
 <div id = "left-column">

@@ -1,3 +1,4 @@
+<?php include 'bootstrap.php'; ?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/menu.php'; ?>
     <div id = "content">

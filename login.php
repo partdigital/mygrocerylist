@@ -1,16 +1,4 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Log In</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div id="header">
-        <div class="content">
-            <h2>MyGroceryList Application</h2>
-        </div>
-    </div>
+<?php include 'includes/header.php'; ?>
     <div id = "login">
         <div class="content">
             <h1>Log In</h1>   
@@ -27,6 +15,4 @@
             </form>
         </div>
     </div>
-    <div id = "footer"></div>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>

@@ -1,16 +1,13 @@
 <?php include 'bootstrap.php'; ?>
+<?php check_is_authorized(); ?>
 <?php 
-    // If not logged in 
-    if (empty($_SESSION['auth'])) {
-        // redirect to login.php
-        header('location:login.php'); 
-    }   
 
     // If query string is set 
     if (!empty($_GET['id'])) {
 
         // Select that row from the database 
-        $sql = 'SELECT `name`,`qty` FROM `items` WHERE `id` = "' . $_GET['id'] . '"'; 
+        $sql = 'SELECT `name`,`qty` FROM `items` WHERE `id` = ' . $_GET['id']; 
+        //var_dump($sql); exit ;
         $result = mysqli_query($db, $sql); 
 
         $data = mysqli_fetch_assoc($result); 
@@ -29,24 +26,29 @@
             $_POST[$key] = $value; 
         }
         
-        // If query string is set then update record 
-        if (!empty($_GET['id'])) {
-            $sql = 'UPDATE `items` SET 
-            `name` = "' . $_POST['name'] . '",  
-            `qty` = "' . $_POST['qty'] . '"
-            WHERE id = "' . $_GET['id']. '"';  
-            
-            // Run query.
-            mysqli_query($db, $sql); 
-            header('location:list.php'); 
-            
-        // If ID is not set then insert record
-		} else {
-            $sql = 'INSERT INTO `items` (`name`, `qty`) VALUES ("' . $_POST['name'] . '", "' . $_POST['qty'].'")'; 
-            
-            // Run query.
-            mysqli_query($db, $sql); 
-            header('location:list.php'); 
+        if (!empty($_POST['name']) && !empty($_POST['qty'])) {
+        
+            // If query string is set then update record 
+            if (!empty($_GET['id'])) {
+                $sql = 'UPDATE `items` SET 
+                `name` = "' . $_POST['name'] . '",  
+                `qty` = "' . $_POST['qty'] . '"
+                WHERE id = "' . $_GET['id']. '"';  
+
+                // Run query.
+                mysqli_query($db, $sql); 
+                header('location:list.php'); 
+
+            // If ID is not set then insert record
+            } else {
+                $sql = 'INSERT INTO `items` (`name`, `qty`) VALUES ("' . $_POST['name'] . '", "' . $_POST['qty'].'")'; 
+
+                // Run query.
+                mysqli_query($db, $sql); 
+                header('location:list.php'); 
+            }
+        } else {
+            $error = "Please provide some values.";
         }
         
     }
@@ -56,6 +58,9 @@
     <div id = "content">
         <div class="content">
             <h1>Grocery Item</h1>   
+            <?php if (!empty($error)) {
+                   render_error_message($error);  
+            } ?>
             <form action = "" method = "POST">
                 <div>
                     <label for = "name">Name:</label>

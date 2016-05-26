@@ -1,10 +1,6 @@
 <?php include 'bootstrap.php'; ?>
+<?php check_is_authorized(); ?>
 <?php 
-    // If not logged in 
-    if (empty($_SESSION['auth'])) {
-        // redirect to login.php
-        header('location:login.php'); 
-    }   
 
     // Fetching groceries
     // Query statement 
@@ -41,7 +37,7 @@ if(!empty($data)) {
         // Output Edit/Delete links with query strings. 
         print '<td>';
         print '<a href = "item.php?id=' . $row['id'] . '">Edit</a> | '; 
-        print '<a href = "">Delete</a>'; 
+        print '<a href = "item-delete.php?id=' . $row['id'] . '">Delete</a>'; 
         print '</td>'; 
         // Closing row tag 
         print '</tr>'; 

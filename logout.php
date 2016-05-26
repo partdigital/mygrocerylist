@@ -1,4 +1,5 @@
 <?php include 'bootstrap.php'; ?>
+<?php check_is_authorized(); ?>
 <?php 
 // Clear the session 
 unset($_SESSION['auth']); 

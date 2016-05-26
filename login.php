@@ -27,14 +27,21 @@
 
 			// Redirect to index.php 
 			header('location:index.php'); 
-		}
+		} else {
+            $error = 'That account does not exist.'; 
+        }
 	}
 ?>
 <?php include 'includes/header.php'; ?>
     <div id = "login">
         <div class="content">
             <h1>Log In</h1>   
-            <form action = "" method = "POST">
+            <?php 
+           if (!empty($error)) {
+                  render_error_message($error);  
+           } 
+            ?>
+           <form action = "" method = "POST">
                 <div>
                     <label for = "name">User name:</label>
                     <input type = "text" name = "username" value = "" size = "45" />

@@ -41,7 +41,7 @@ if(!empty($data)) {
         // Output Edit/Delete links with query strings. 
         print '<td>';
         print '<a href = "item.php?id=' . $row['id'] . '">Edit</a> | '; 
-        print '<a href = "">Delete</a>'; 
+        print '<a href = "item-delete.php?id=' . $row['id'] . '">Delete</a>'; 
         print '</td>'; 
         // Closing row tag 
         print '</tr>'; 
